@@ -1,0 +1,41 @@
+# Composer / PHP
+/vendor/
+composer.lock
+
+# Cache do Composer
+/.composer/
+
+# Arquivos de ambiente
+.env
+.env.*
+!.env.example
+
+# Sessões
+*.sess
+
+# Logs
+*.log
+logs/
+storage/logs/
+
+# Arquivos temporários
+*.cache
+*.tmp
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Sistema operacional
+# Windows
+Thumbs.db
+desktop.ini
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# PHPStorm / JetBrains
+.idea/
