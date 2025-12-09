@@ -1,14 +1,14 @@
 <?php
 
+use Alura\Mvc\Repository\VideoRepository;
+
 require __DIR__ . '/src/config/conexao.php';
 
 $id = $_GET['id'];
 
-$sql = 'DELETE FROM videos WHERE id = ?';
-$statement = $pdo->prepare($sql);
-$statement->bindValue(1, $id);
+$repository = new VideoRepository($pdo);
 
-if ($statement->execute() === false) {
+if ($repository->remove($id) === false) {
     header('Location: /?sucesso=0');
 } else {
     header('Location: /?sucesso=1');

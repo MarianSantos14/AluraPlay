@@ -1,5 +1,8 @@
 <?php
 
+use Alura\Mvc\Entity\Video;
+use Alura\Mvc\Repository\VideoRepository;
+
 require __DIR__ . '/src/config/conexao.php';
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
@@ -19,13 +22,13 @@ if ($titulo === false) {
     exit();
 }
 
-$sql = 'UPDATE videos SET url = :url, title = :title WHERE id = :id;';
-$statement = $pdo->prepare($sql);
-$statement->bindValue(':url', $url);
-$statement->bindValue(':title', $titulo);
-$statement->bindValue(':id', $id, PDO::PARAM_INT);
+$video = new Video($url, $titulo);
+$video->setID($id);
 
-if ($statement->execute() === false) {
+$repository = new VideoRepository($pdo);
+$repository->update($video);
+
+if ($repository->update($video) === false) {
     header('Location: /?sucesso=0');
 } else {
     header('Location: /?sucesso=1');
