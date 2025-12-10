@@ -15,7 +15,7 @@ use Alura\Mvc\Repository\VideoRepository;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$pdo = require __DIR__ . '/../src/config/conexao.php';
+$pdo = require __DIR__ . '/../config/conexao.php';
 $videoRepository = new VideoRepository($pdo);
 
 
