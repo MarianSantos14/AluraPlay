@@ -1,13 +1,3 @@
-<?php
-
-use Alura\Mvc\Repository\VideoRepository;
-
-require __DIR__ . '/src/config/conexao.php';
-
-$repository = new VideoRepository($pdo);
-$videoList = $repository->all();
-
-?>
 <?php require_once 'inicio-html.php'; ?>
     <ul class="videos__container">
         <?php foreach ($videoList as $video): ?>
