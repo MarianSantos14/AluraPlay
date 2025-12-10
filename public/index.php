@@ -2,14 +2,7 @@
 
 declare(strict_types=1);
 
-use Alura\Mvc\Controller\{
-    Controller,
-    DeleteVideoController,
-    EditVideoController,
-    NewVideoController,
-    VideoFormController,
-    VideoListController
-};
+use Alura\Mvc\Controller\Error404Controller;
 
 use Alura\Mvc\Repository\VideoRepository;
 
@@ -18,27 +11,18 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $pdo = require __DIR__ . '/../config/conexao.php';
 $videoRepository = new VideoRepository($pdo);
 
+$routes = require_once __DIR__ . '/../config/routes.php';
 
+$pathInfo = $_SERVER['PATH_INFO'] ?? '/';
+$httpMethod = $_SERVER['REQUEST_METHOD'];
 
-if (!array_key_exists('PATH_INFO', $_SERVER) || $_SERVER['PATH_INFO'] === '/') {
-    $controller = new VideoListController($videoRepository);
-} elseif ($_SERVER['PATH_INFO'] === '/novo-video') {
-    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        $controller = new VideoFormController($videoRepository);
-    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $controller = new NewVideoController($videoRepository);
-    }
-} elseif ($_SERVER['PATH_INFO'] === '/editar-video') {
-    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        $controller = new VideoFormController($videoRepository);
-    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $controller = new EditVideoController($videoRepository);
-    }
-} elseif ($_SERVER['PATH_INFO'] === '/remover-video') {
-    $controller = new DeleteVideoController($videoRepository);
+$key = "$httpMethod|$pathInfo";
+if (array_key_exists($key, $routes)) {
+    $controllerClass = $routes[$key];
+
+    $controller = new $controllerClass($videoRepository);
 } else {
-    http_response_code(404);
+    $controller = new Error404Controller;
 }
 
-/** @var Controller $controller */
 $controller->processaRequisicao();
