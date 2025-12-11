@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Alura\Mvc\Controller\{
+    DeleteCapaController,
     DeleteVideoController,
     EditVideoController,
     LoginFormController,
@@ -22,5 +23,6 @@ return [
     'GET|/remover-video' => DeleteVideoController::class,
     'GET|/login' => LoginFormController::class,
     'POST|/login' => LoginController::class,
-    'GET|/logout' => LogoutController::class
+    'GET|/logout' => LogoutController::class,
+    'GET|/delete-capa' => DeleteCapaController::class
 ];
