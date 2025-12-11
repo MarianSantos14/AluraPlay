@@ -28,20 +28,27 @@ class Video
         $this->url = $url;
     }
 
-    public function setId(int $id) : void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
 
-
-    public function setFilePath(string $filePath) : void
+    public function setFilePath(string $filePath): void
     {
         $this->filePath = $filePath;
     }
 
-    public function getFilePath() : ?string
+    public function getFilePath(): ?string
     {
         return $this->filePath;
     }
-    
+
+    public function slugifyNomeDoArquivo(string $text): string
+    {
+        $text = mb_strtolower($text);
+        $text = iconv('UTF-8', 'ASCII//TRANSLIT', $text);
+        $text = preg_replace('/[^a-z0-9]+/', '-', $text);
+        $text = preg_replace('/-+/', '-', $text);
+        return trim($text, '-');
+    }
 }
