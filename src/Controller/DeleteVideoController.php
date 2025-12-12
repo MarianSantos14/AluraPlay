@@ -21,7 +21,7 @@ class DeleteVideoController implements Controller
         $queryParams = $request->getQueryParams();
         $id = filter_var($queryParams['id'], FILTER_VALIDATE_INT);
         if ($id === false || $id === null) {
-            $this->addErrorMessage('ID inválido');
+            $this->addErrorMenssage('ID inválido');
             return new Response(302, [
                 'Location' => '/'
             ]);
@@ -29,7 +29,7 @@ class DeleteVideoController implements Controller
 
         $success = $this->videoRepository->remove($id);
         if ($success === false) {
-            $this->addErrorMessage('Erro ao remover vídeo');
+            $this->addErrorMenssage('Erro ao remover vídeo');
             return new Response(302, [
                 'Location' => '/'
             ]);

@@ -44,39 +44,8 @@ class Video
         return $this->filePath;
     }
 
-    public function slugifyNomeDoArquivo(string $text): string
+    public function safeNameFile($uploadedImage): void
     {
-        $text = mb_strtolower($text);
-        $text = iconv('UTF-8', 'ASCII//TRANSLIT', $text);
-        $text = preg_replace('/[^a-z0-9]+/', '-', $text);
-        $text = preg_replace('/-+/', '-', $text);
-        return trim($text, '-');
-    }
-
-    public function safeNameFile(): void
-    {
-        if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
-            $pathInfo = pathinfo($_FILES['image']['name']);
-
-            $name = $pathInfo['filename'];
-            $ext  = $pathInfo['extension'] ?? '';
-
-            $name = $this->slugifyNomedoArquivo($name);
-
-            $nome = $ext ? $name . '.' . strtolower($ext) : $name;
-
-            $safeFileName = uniqid('upload_') . '_' . $nome;
-
-            $finfo = new finfo(FILEINFO_MIME_TYPE);
-            $mimeType = $finfo->file($_FILES['image']['tmp_name']);
-
-            if (str_starts_with($mimeType, 'image/')) {
-                move_uploaded_file(
-                    $_FILES['image']['tmp_name'],
-                    __DIR__ . '/../../public/img/uploads/' . $safeFileName
-                );
-                $this->setFilePath($safeFileName);
-            }
-        }
+        
     }
 }

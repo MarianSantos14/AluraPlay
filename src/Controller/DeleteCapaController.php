@@ -21,7 +21,7 @@ class DeleteCapaController implements Controller
         $queryParams = $request->getQueryParams();
         $id = filter_var($queryParams['id'], FILTER_VALIDATE_INT);
         if ($id === false || $id === null) {
-            $this->addErrorMessage('ID inválido');
+            $this->addErrorMenssage('ID inválido');
             return new Response(302, [
                 'Location' => '/'
             ]);
@@ -29,7 +29,7 @@ class DeleteCapaController implements Controller
 
         $success = $this->videoRepository->removeCapa($id);
         if ($success === false) {
-            $this->addErrorMessage('Erro ao remover a capa do vídeo');
+            $this->addErrorMenssage('Erro ao remover a capa do vídeo');
             return new Response(302, [
                 'Location' => '/'
             ]);

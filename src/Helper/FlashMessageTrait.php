@@ -6,7 +6,7 @@ namespace Alura\Mvc\Helper;
 
 trait FlashMessageTrait
 {
-    private function addErrorMessage(string $errorMenssage): void {
-        $_SESSION['error_message'] = $errorMenssage;
+    private function addErrorMenssage(string $errorMenssage): void {
+        $_SESSION['error_menssage'] = $errorMenssage;
     }
 }
