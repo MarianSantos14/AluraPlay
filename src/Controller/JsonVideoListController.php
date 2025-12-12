@@ -6,12 +6,15 @@ namespace Alura\Mvc\Controller;
 
 use Alura\Mvc\Entity\Video;
 use Alura\Mvc\Repository\VideoRepository;
+use Nyholm\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class JsonVideoListController implements Controller
 {
     public function __construct(private VideoRepository $videoRepository) {}
 
-    public function processaRequisicao(): void
+    public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
     {
         $videoList = array_map(function (Video $video): array {
                 return [
@@ -22,6 +25,9 @@ class JsonVideoListController implements Controller
             },
             $this->videoRepository->all()
         );
-        echo json_encode($videoList);
+        
+        return new Response(302, [
+            json_encode($videoList)
+        ]);
     }
 }

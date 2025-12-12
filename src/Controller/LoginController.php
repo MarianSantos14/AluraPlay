@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace Alura\Mvc\Controller;
 
 use Alura\Mvc\Helper\FlashMessageTrait;
+use Nyholm\Psr7\Response;
 use PDO;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class LoginController implements Controller
 {
@@ -13,14 +16,16 @@ class LoginController implements Controller
 
     private PDO $pdo;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->pdo = require __DIR__ . '/../../config/conexao.php';
     }
 
-    public function processaRequisicao(): void
+    public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
     {
-        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-        $password = filter_input(INPUT_POST, 'password');
+        $queryParams = $request->getQueryParams();
+        $email = filter_var($queryParams['email'], FILTER_VALIDATE_EMAIL);
+        $password = filter_var($queryParams['password']);
 
         $sql = 'SELECT * FROM users WHERE email = ?;';
         $statement = $this->pdo->prepare($sql);
@@ -32,10 +37,14 @@ class LoginController implements Controller
 
         if ($correctPassword) {
             $_SESSION['logado'] = true;
-            header('Location: /');
+            return new Response(302, [
+                'Locations' => '/'
+            ]);
         } else {
             $this->addErrorMessage('Usuário ou senha inválidos');
-            header('Location: /login?sucesso=0');
+            return new Response(302, [
+                'Locations' => '/login'
+            ]);
         }
     }
 }
