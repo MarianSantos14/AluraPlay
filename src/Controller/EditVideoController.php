@@ -5,11 +5,14 @@ declare(strict_types=1);
 namespace Alura\Mvc\Controller;
 
 use Alura\Mvc\Entity\Video;
+use Alura\Mvc\Helper\FlashMessageTrait;
 use Alura\Mvc\Repository\VideoRepository;
 use finfo;
 
 class EditVideoController implements Controller
 {
+    use FlashMessageTrait;
+    
     public function __construct(private VideoRepository $videoRepository) {}
 
     public function processaRequisicao(): void
@@ -39,7 +42,8 @@ class EditVideoController implements Controller
         $success = $this->videoRepository->update($video);
 
         if ($success === false) {
-            header('Location: /?sucesso=0');
+            $this->addErrorMessage('Erro ao editar vídeo');
+            header('Location: /novo-video');
         } else {
             header('Location: /?sucesso=1');
         }

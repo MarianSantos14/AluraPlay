@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Alura\Mvc\Controller;
 
-class LoginFormController extends ControllerWithHtml implements Controller
+use Alura\Mvc\Helper\HtmlRenderTrait;
+
+class LoginFormController implements Controller
 {
+    use HtmlRenderTrait;
+    
     public function __construct() {}
 
     public function processaRequisicao(): void
