@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 use Alura\Mvc\Controller\Error404Controller;
 
-use Alura\Mvc\Repository\VideoRepository;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7Server\ServerRequestCreator;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$pdo = require __DIR__ . '/../config/conexao.php';
-$videoRepository = new VideoRepository($pdo);
-
 $routes = require_once __DIR__ . '/../config/routes.php';
+$diContainer = require_once __DIR__ . '/../config/dependencies.php';
 
 $pathInfo = $_SERVER['PATH_INFO'] ?? '/';
 $httpMethod = $_SERVER['REQUEST_METHOD'];
@@ -29,8 +26,7 @@ if (!array_key_exists('logado', $_SESSION) && !$isLoginRoute) {
 $key = "$httpMethod|$pathInfo";
 if (array_key_exists($key, $routes)) {
     $controllerClass = $routes[$key];
-
-    $controller = new $controllerClass($videoRepository);
+    $controller = $diContainer->get($controllerClass);
 } else {
     $controller = new Error404Controller;
 }
