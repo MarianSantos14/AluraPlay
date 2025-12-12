@@ -30,6 +30,7 @@ class LoginController implements Controller
             $_SESSION['logado'] = true;
             header('Location: /');
         } else {
+            $_SESSION['error_menssage'] = 'Usuário ou senha inválidos';
             header('Location: /login?sucesso=0');
         }
     }

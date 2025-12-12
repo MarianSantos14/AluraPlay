@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Alura\Mvc\Controller;
 
-class LoginFormController implements Controller
+class LoginFormController extends ControllerWithHtml implements Controller
 {
     public function __construct() {}
 
@@ -13,6 +13,7 @@ class LoginFormController implements Controller
         if (($_SESSION['logado'] ?? false) === true) {
             header('Location: /');
         }
-        require_once __DIR__ . '/../../views/login-form.php';
+
+        echo $this->renderTemplate('login-form');
     }
 }

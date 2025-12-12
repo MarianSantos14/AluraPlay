@@ -16,13 +16,15 @@ class NewVideoController implements Controller
     {
         $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
         if ($url === false) {
-            header('Location: /?sucesso=0');
+            $_SESSION['error_menssage'] = 'Url inválida ou não informada';
+            header('Location: /novo-video');
             return;
         }
 
         $titulo = filter_input(INPUT_POST, 'titulo');
         if ($titulo === false) {
-            header('Location: /?sucesso=0');
+            $_SESSION['error_menssage'] = 'Título não informado';
+            header('Location: /novo-video');
             return;
         }
 
@@ -32,7 +34,8 @@ class NewVideoController implements Controller
 
         $success = $this->videoRepository->add($video);
         if ($success === false) {
-            header('Location: /?sucesso=0');
+            $_SESSION['error_menssage'] = 'Erro ao cadastrar vídeo';
+            header('Location: /novo-video');
         } else {
             header('Location: /?sucesso=1');
         }
