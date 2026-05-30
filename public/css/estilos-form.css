@@ -22,6 +22,7 @@
     color: var(--azul-medio);
     font-weight: bold;
     font-size: 21px;
+    padding-top: 30px;
 }
 
 .campo__escrita {
@@ -29,7 +30,19 @@
     border-radius: 24px;
     display: block;
     color: black;
-    padding: 1em
+    padding: 1em;
+    background-color: #ffffff !important;
+    border: none; 
+    box-sizing: border-box;
+}
+
+/* preenchimento automatico não mude a cor */
+.campo__escrita:-webkit-autofill,
+.campo__escrita:-webkit-autofill:hover, 
+.campo__escrita:-webkit-autofill:focus {
+    -webkit-text-fill-color: black;
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 .campo__etiqueta {
@@ -37,6 +50,25 @@
     padding: 0 0 .1em 1em;
     font-weight: 700;
     color: var(--azul-medio);
+    display: block;
+}
+
+.campo__file-upload {
+    cursor: pointer;
+    color: #757575;
+    display: flex;
+    align-items: center;
+}
+
+.input-file-oculto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
 .formulario__botao {

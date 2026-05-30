@@ -44,7 +44,7 @@ class NewVideoController implements RequestHandlerInterface
         /** @var UploadedFileInterface $uploadedImage */
         $uploadedImage = $files['image'];
 
-        if ($uploadedImage->getError === UPLOAD_ERR_OK) {
+        if ($uploadedImage->getError() === UPLOAD_ERR_OK) {
             $finfo = new finfo(FILEINFO_MIME_TYPE);
             $tmpFile = $uploadedImage->getStream()->getMetadata('uri');
             $mimeType = $finfo->file($tmpFile);

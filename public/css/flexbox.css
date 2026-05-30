@@ -5,11 +5,6 @@
     align-items: center;
 }
 
-
-
-
-
-
 /* SEÇÃO VÍDEOS */
 
 .videos__container {
@@ -17,7 +12,7 @@
     flex-wrap: wrap;
     gap: 10px;
     z-index: 1;
-    padding: 153px 20px 10px 20px;
+    padding: 60px 20px 10px 20px;
 }
 
 .videos__item {
@@ -50,6 +45,19 @@
 .descricao-video .acoes-video {
     display: flex;
     justify-content: space-around;
+    gap: 8px
+}
+
+.descricao-video .acoes-video .editar {
+    color: rgb(0, 0, 202) !important;
+}
+
+.descricao-video .acoes-video .excluir {
+    color: rgb(202, 0, 0) !important;
+}
+
+.descricao-video .acoes-video .remover-capa {
+    color: rgb(202, 168, 0) !important;
 }
 
 .descricao-video .acoes-video a {

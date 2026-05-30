@@ -15,9 +15,9 @@
             <div class="descricao-video">
                 <h3><?= $video->title; ?></h3>
                 <div class="acoes-video">
-                    <a href="/editar-video?id=<?= $video->id; ?>">Editar</a>
-                    <a href="/remover-video?id=<?= $video->id; ?>">Excluir</a>
-                    <a href="/delete-capa?id=<?= $video->id; ?>">Remover capa</a>
+                    <a class="editar" href="/editar-video?id=<?= $video->id; ?>">Editar</a>
+                    <a class="excluir" href="/remover-video?id=<?= $video->id; ?>">Excluir</a>
+                    <a class="remover-capa" href="/delete-capa?id=<?= $video->id; ?>">Remover capa</a>
                 </div>
             </div>
         </li>

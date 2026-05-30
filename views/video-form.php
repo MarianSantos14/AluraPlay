@@ -1,4 +1,5 @@
 <?php $this->layout('layout'); ?>
+
 <main class="container">
     <form class="container__formulario"
         enctype="multipart/form-data"
@@ -26,14 +27,24 @@
 
         <div class="formulario__campo">
             <label class="campo__etiqueta" for="image">Imagem do vídeo</label>
-            <input name="image"
-                accept="image/*"
-                type="file"
-                class="campo__escrita"
-                placeholder="Neste campo, dê o nome do vídeo"
-                id='image' />
+
+            <label class="campo__escrita campo__file-upload" desert-label>
+                <span id="file-name">Escolher Arquivo...</span>
+                <input name="image"
+                    accept="image/*"
+                    type="file"
+                    id='image'
+                    class="input-file-oculto" />
+            </label>
         </div>
 
         <input class="formulario__botao" type="submit" value="Enviar" />
     </form>
 </main>
+
+<script>
+    document.getElementById('image').addEventListener('change', function() {
+        const fileName = this.files.length > 0 ? this.files[0].name : "Escolher Arquivo...";
+        document.getElementById('file-name').textContent = fileName;
+    });
+</script>
