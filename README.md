@@ -22,7 +22,7 @@ Cursos envolvidos:
 
 * [PHP na Web: Conhecendo o padrão MVC](https://cursos.alura.com.br/course/php-web-conhecendo-padrao-mvc)
 * [PHP na Web: Lidando com segurança e API](https://cursos.alura.com.br/course/php-web-lidando-seguranca-api)
-* [PHP na Web: Aplicando boas práticas e PSRs](hhttps://cursos.alura.com.br/course/php-web-aplicando-boas-praticas-psrs)
+* [PHP na Web: Aplicando boas práticas e PSRs](https://cursos.alura.com.br/course/php-web-aplicando-boas-praticas-psrs)
 
 ---
 
