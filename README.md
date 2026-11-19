@@ -28,6 +28,8 @@ Cursos envolvidos:
 * [PHP na Web: Lidando com segurança e API](https://cursos.alura.com.br/course/php-web-lidando-seguranca-api)
 * [PHP na Web: Aplicando boas práticas e PSRs](https://cursos.alura.com.br/course/php-web-aplicando-boas-praticas-psrs)
 
+Tecnologias principais: PHP 8.2, HTML, CSS, MySQL 8.0 e Composer.
+
 ---
 
 ### Funcionalidades:
