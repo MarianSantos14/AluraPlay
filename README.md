@@ -34,11 +34,6 @@ Tecnologias principais: PHP 8.2, HTML, CSS, MySQL 8.0 e Composer.
 
 ### Funcionalidades:
 
-O AluraPlay é uma aplicação web com PHP puro e com o objetivo de praticar conceitos fundamentais de backend.
-
-A aplicação simula uma plataforma simples de vídeos, permitindo gerenciar conteúdos e usuários, aplicando boas práticas de desenvolvimento.
-
-
 #### CRUD
 * Criar, Ler, Editar, Excluir um vídeo
 #### Autenticação
