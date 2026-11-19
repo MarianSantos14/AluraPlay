@@ -12,9 +12,13 @@
 
 ### Sobre o projeto:
 
-![Alura](https://www.alura.com.br/assets/img/alura-logo.1647533643.svg)
+Este projeto consiste no desenvolvimento de uma aplicação web chamada AluraPlay, uma plataforma de compartilhamento de vídeos inspirada em serviços de streaming.
+
+A aplicação permite visualizar vídeos de forma dinâmica, realizar buscas e cadastrar novos conteúdos. O projeto utiliza JavaScript para manipular o DOM e realizar requisições HTTP, conectando o front-end a uma API simulada com JSON Server.
 
 Este projeto faz parte da trilha:
+
+![Alura](https://www.alura.com.br/assets/img/alura-logo.1647533643.svg)
 
 > [PHP Web: crie aplicações web em PHP](https://cursos.alura.com.br/app/learning-guide/alura/php-web)
 
